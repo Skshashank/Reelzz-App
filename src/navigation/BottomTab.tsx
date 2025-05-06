@@ -5,6 +5,7 @@ import ProfileScreen from '../screens/dashboard/ProfileScreen';
 import {RFValue} from 'react-native-responsive-fontsize';
 import { Platform } from 'react-native';
 import { Colors } from '../constants/Colors';
+import { HomeTabIcon, ProfileTabIcon } from './TabIcon';
 const Tab = createBottomTabNavigator();
 const BottomTab:FC = () => {
   return (
@@ -17,13 +18,21 @@ const BottomTab:FC = () => {
           paddingBottom: Platform.OS === 'ios' ? 20: 10,
           height: Platform.OS === 'android' ? 70 : 80,
           borderWidth: 0,
-          position: 'absolute'
+          position: 'absolute' // if contents exists than it will get behind
         },
         tabBarActiveTintColor:Colors.theme,
         tabBarInactiveTintColor: '#447777',
         headerShownVisible: false,
         tabBarShowVisible: false, 
         tabBarShowLabel: false,
+        tabBarIcon:({focused}) => {
+          if(route.name === 'Home'){
+            return <HomeTabIcon focused = {focused} />;
+          }
+          if(route.name === 'profile'){
+            return <ProfileTabIcon focused = {focused}/>
+          }
+        }
       })
 
       }
