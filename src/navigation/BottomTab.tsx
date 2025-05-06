@@ -16,6 +16,7 @@ const BottomTab:FC = () => {
         tabBarStyle : {
           paddingTop: Platform.OS ==='ios'? RFValue(5):0,
           paddingBottom: Platform.OS === 'ios' ? 20: 10,
+          backgroundColor: 'transparent',
           height: Platform.OS === 'android' ? 70 : 80,
           borderWidth: 0,
           position: 'absolute' // if contents exists than it will get behind
@@ -38,7 +39,22 @@ const BottomTab:FC = () => {
       }
     >
       <Tab.Screen name = 'Home' component = {HomeScreen}/>
-      <Tab.Screen name = "Post" component = {HomeScreen}/>
+      <Tab.Screen name = "Post" component = {HomeScreen}
+      // What does e.preventDefault() do?
+      // By default, when a user taps a tab, React Navigation automatically navigates to that tab’s screen.
+      
+      // But here, e.preventDefault() cancels the default navigation behavior.
+      // So when the user taps the Post tab, nothing happens — it blocks switching to the HomeScreen.
+      
+      // This is useful if:
+      // ✅ You want to disable or lock the tab
+      // ✅ You want to run some custom logic (like showing a modal or a warning) instead of navigating
+        listeners={{
+          tabPress: e => {
+            e.preventDefault();
+          },
+        }}
+      />
       <Tab.Screen name = "Profile" component = {ProfileScreen}/>
     </Tab.Navigator>
   )
