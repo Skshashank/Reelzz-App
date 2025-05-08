@@ -11,7 +11,7 @@ import {
 } from 'redux-persist'; //to persist (save) parts of the Redux state (e.g., user) across app restarts (like AsyncStorage on React Native)
 import reduxStorage from './storage';
 import rootReducer from './rootReducer';
-
+// we use it for data persist when app close and gets reopen
 const persistConfig = {
   key: 'root',
   storage: reduxStorage,
