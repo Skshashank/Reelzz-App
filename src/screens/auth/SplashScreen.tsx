@@ -8,6 +8,7 @@ import { token_storage } from '../../redux/storage'
 import {jwtDecode} from 'jwt-decode'
 import { resetAndNavigate } from '../../utils/NavigationUtil'
 import Toast from 'react-native-toast-message';
+import { refresh_tokens } from '../../redux/apiConfig'
 interface DecodedToken {
   exp:number
 }
@@ -41,7 +42,7 @@ const SplashScreen: FC = () => {
 
     if(decodedAccessToken?.exp>currentTime){
       try{
-       
+       refresh_tokens()
       }catch(error){
         console.log(error)
         Alert.alert("There was an error")
