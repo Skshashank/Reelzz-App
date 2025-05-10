@@ -7,7 +7,7 @@ import { FONTS } from '../../constants/Fonts'
 import { token_storage } from '../../redux/storage'
 import {jwtDecode} from 'jwt-decode'
 import { resetAndNavigate } from '../../utils/NavigationUtil'
-
+import Toast from 'react-native-toast-message';
 interface DecodedToken {
   exp:number
 }
@@ -29,6 +29,13 @@ const SplashScreen: FC = () => {
     if(decodedRefreshToken?.exp<currentTime){
       resetAndNavigate('LoginScreen')
       Alert.alert("Session Expired, please login again!") 
+      Toast.show({
+        type: 'error',
+        text1: 'Session Expired',
+        text2: 'Please login again!',
+        position: 'bottom', 
+        visibilityTime: 3000,
+      });
       return;
     }
 
