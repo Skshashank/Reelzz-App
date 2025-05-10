@@ -1,4 +1,3 @@
-import { View, Text } from 'react-native'
 import React, { FC } from 'react'
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { mergedStacks } from './ScreenCollections'
@@ -7,13 +6,10 @@ const Stack = createNativeStackNavigator()
 const MainNavigator: FC = () => {
   return (
     <Stack.Navigator
-    screenOptions = {() => ({
-      headerShown: false,
-    })}
-      // initialRouteName="SplashScreen"
-      // screenOptions={() => ({
-      //   headerShown: false,
-      // })}
+      initialRouteName="SplashScreen"
+      screenOptions={() => ({
+        headerShown: false,
+      })}
       >
       {mergedStacks.map((item, index) => {
         return (
