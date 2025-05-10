@@ -1,8 +1,9 @@
 import 'react-native-gesture-handler'
-import { View, Text } from 'react-native'
+import { View, Text, StatusBar, Platform } from 'react-native'
 import React from 'react'
 import { GoogleSignin } from '@react-native-google-signin/google-signin'
 import Navigation from './src/navigation/Navigation';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 GoogleSignin.configure({
   webClientId:
@@ -14,7 +15,15 @@ GoogleSignin.configure({
 });
 
 const App = () => {
-  return <Navigation/>
+  return (
+    <GestureHandlerRootView style = {{flex:1}}> 
+    <StatusBar
+     translucent ={Platform.OS === 'ios'}
+     backgroundColor= "transparent"
+    />
+      <Navigation/>
+    </GestureHandlerRootView>
+)
   
 }
 
