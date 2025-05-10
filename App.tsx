@@ -4,6 +4,9 @@ import React from 'react'
 import { GoogleSignin } from '@react-native-google-signin/google-signin'
 import Navigation from './src/navigation/Navigation';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import { Provider } from 'react-redux';
+import { persistor, store } from './src/redux/store';
+import { PersistGate } from 'redux-persist/integration/react';
 
 GoogleSignin.configure({
   webClientId:
@@ -21,7 +24,11 @@ const App = () => {
      translucent ={Platform.OS === 'ios'}
      backgroundColor= "transparent"
     />
-      <Navigation/>
+      <Provider store={store}>
+        <PersistGate loading={null} persistor={persistor}>
+          <Navigation />
+        </PersistGate>
+    </Provider>
     </GestureHandlerRootView>
 )
   
