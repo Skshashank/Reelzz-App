@@ -15,8 +15,8 @@ export const authStack = [
     component: RegisterScreen,
   },
   {
-    name:'SplashScren',
-    component: SplashScreen
+    name:'SplashScreen',
+    component: SplashScreen,
   }
 ]
 
