@@ -9,6 +9,8 @@ import {jwtDecode} from 'jwt-decode'
 import { resetAndNavigate } from '../../utils/NavigationUtil'
 import Toast from 'react-native-toast-message';
 import { refresh_tokens } from '../../redux/apiConfig'
+import { refetchUser } from '../../redux/actions/userAction'
+import { useAppDispatch } from '../../redux/reduxHook'
 interface DecodedToken {
   exp:number
 }
@@ -16,7 +18,7 @@ const SplashScreen: FC = () => {
 
   const [isStop, setIsStop] = useState(false);
   const scale = new Animated.Value(1);
-
+  const dispatch = useAppDispatch()
   const tokenCheck =  async() => {
    const access_token = token_storage.getString('access_token') as string;
    const refresh_token = token_storage.getString('refresH_token') as string;
@@ -43,6 +45,7 @@ const SplashScreen: FC = () => {
     if(decodedAccessToken?.exp>currentTime){
       try{
        refresh_tokens()
+       dispatch(refetchUser());
       }catch(error){
         console.log(error)
         Alert.alert("There was an error")
