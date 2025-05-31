@@ -53,7 +53,7 @@ const BottomTab: FC = () => {
         options={{
           tabBarIcon: () => {
             return (
-              <TouchableOpacity
+              <TouchableOpacity 
                 onPress={() => navigate('PickReelScreen')}
                 activeOpacity={0.5}
                 style={bottomBarStyles.customMiddleButton}>
