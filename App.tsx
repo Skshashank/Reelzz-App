@@ -12,7 +12,7 @@ import Toast from 'react-native-toast-message';
 GoogleSignin.configure({
   webClientId:
     '934171381237-9u9eha569frdbtbgi1fhk88lsk9a7e62.apps.googleusercontent.com',
-  forceCodeForRefreshToken: true, // if token gets expire it automatically refreses it
+  forceCodeForRefreshToken: true,
   offlineAccess: false,
   iosClientId:
     '934171381237-e97v98pi6dfe1e503tv0pj73c38vddnv.apps.googleusercontent.com',
